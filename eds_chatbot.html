@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EDS AI Chatbot</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f9ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .chat-container {
+      width: 400px;
+      max-width: 90%;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background: #0072ff;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    .chat-body {
+      padding: 15px;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .chat-message {
+      margin: 10px 0;
+      display: flex;
+    }
+
+    .chat-message.user {
+      justify-content: flex-end;
+    }
+
+    .chat-message.bot {
+      justify-content: flex-start;
+    }
+
+    .message-bubble {
+      padding: 10px 15px;
+      border-radius: 15px;
+      max-width: 70%;
+    }
+
+    .chat-message.user .message-bubble {
+      background: #0072ff;
+      color: white;
+      border-bottom-right-radius: 0;
+    }
+
+    .chat-message.bot .message-bubble {
+      background: #eef7ff;
+      color: #0072ff;
+      border-bottom-left-radius: 0;
+    }
+
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+
+    .chat-input input {
+      flex: 1;
+      border: none;
+      padding: 10px 15px;
+      font-size: 1em;
+    }
+
+    .chat-input button {
+      border: none;
+      padding: 10px 15px;
+      background: #0072ff;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .chat-input button:hover {
+      background: #005fcc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-container">
+    <div class="chat-header">EDS AI Assistant 🤖</div>
+    <div class="chat-body" id="chat-body">
+      <div class="chat-message bot">
+        <div class="message-bubble">Hello! I am your EDS AI Assistant. Ask me anything about our club, events, or joining!</div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Type your question..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const chatBody = document.getElementById('chat-body');
+    const userInput = document.getElementById('user-input');
+
+    // Simple rule-based AI responses
+    function getBotResponse(message) {
+      message = message.toLowerCase();
+      if (message.includes("about") || message.includes("echelon")) {
+        return "Echelon Dev Society (EDS) is CDGI's official developer club. We organize hackathons, workshops, and coding projects!";
+      } else if (message.includes("hackathon")) {
+        return "Our Hackathon 2025 lets students build projects in 24 hours. Prizes include Best Product, Best UI, and Best AI!";
+      } else if (message.includes("join")) {
+        return "To join EDS, follow our Instagram or contact a club lead. Everyone is welcome!";
+      } else if (message.includes("workshop")) {
+        return "We host workshops on Web Development, AI/ML, and Git. They are hands-on and free for CDGI students!";
+      } else {
+        return "Sorry, I didn't understand that. Try asking about 'About EDS', 'Hackathon', 'Join', or 'Workshops'.";
+      }
+    }
+
+    function sendMessage() {
+      const message = userInput.value.trim();
+      if (message === "") return;
+
+      // Add user message
+      const userMsgDiv = document.createElement("div");
+      userMsgDiv.classList.add("chat-message", "user");
+      userMsgDiv.innerHTML = `<div class="message-bubble">${message}</div>`;
+      chatBody.appendChild(userMsgDiv);
+
+      userInput.value = "";
+      chatBody.scrollTop = chatBody.scrollHeight;
+
+      // Bot reply
+      setTimeout(() => {
+        const botMsgDiv = document.createElement("div");
+        botMsgDiv.classList.add("chat-message", "bot");
+        botMsgDiv.innerHTML = `<div class="message-bubble">${getBotResponse(message)}</div>`;
+        chatBody.appendChild(botMsgDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 500);
+    }
+
+    // Allow pressing Enter to send
+    userInput.addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    });
+  </script>
+  <a href="eds chatbot.html" target="_blank">
+  <button>Open EDS Chatbot 🤖</button>
+</a>
+
+</body>
+</html>
+

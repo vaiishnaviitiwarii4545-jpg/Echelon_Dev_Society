@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Echelon Dev Society | CDGI</title>
+
+  <style>
+    /* 🌸 Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: #f5f9ff;
+      color: #222;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* 🌐 Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background: linear-gradient(90deg, #0072ff, #00c6ff);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* 🦋 Hero Section */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+    }
+
+    /* 💡 About Section */
+    .about {
+      padding: 70px 20px;
+      text-align: center;
+      background: white;
+    }
+
+    .about h2 {
+      color: #0072ff;
+      margin-bottom: 15px;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+      font-size: 1.1em;
+    }
+
+    /* 🚀 Events / Projects Section */
+    .projects {
+      background: #eef7ff;
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    .projects h2 {
+      color: #0072ff;
+      margin-bottom: 40px;
+    }
+
+    .project-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .project {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 280px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+    }
+
+    .project h3 {
+      color: #0072ff;
+      margin-bottom: 10px;
+    }
+
+    /* 👩‍💻 Team Section */
+    .team {
+      padding: 70px 20px;
+      text-align: center;
+      background: white;
+    }
+
+    .team h2 {
+      color: #0072ff;
+      margin-bottom: 40px;
+    }
+
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .member {
+      background: #eef7ff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .member img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    /* ⚓ Footer */
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer a {
+      color: #00c6ff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* 🌙 Dark Mode */
+    .dark-mode {
+      background: #0b0f17;
+      color: white;
+    }
+
+    .dark-mode header {
+      background: #1a1f2b;
+    }
+
+    .dark-mode .hero {
+      background: linear-gradient(to right, #232526, #414345);
+    }
+
+    .dark-mode footer {
+      background: #1a1f2b;
+    }
+
+    .mode-toggle {
+      cursor: pointer;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-weight: 600;
+      background: white;
+      color: #0072ff;
+      transition: 0.3s;
+    }
+
+    .mode-toggle:hover {
+      background: #0072ff;
+      color: white;
+    }
+
+    /* 📱 Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      .project-grid, .team-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🌐 Header -->
+  <header>
+    <img src="logo.png" alt="EDS Logo" />
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="mode-toggle" onclick="toggleMode()">🌙 Dark Mode</button>
+  </header>
+
+  <!-- 🦋 Hero Section -->
+  <section class="hero" id="home">
+    <h1>Welcome to Echelon Dev Society</h1>
+    <p>Innovate. Create. Collaborate. Empowering the next generation of developers at CDGI.</p>
+  </section>
+
+  <!-- 💡 About -->
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>
+      Echelon Dev Society (EDS) is the official Developer and Hackathon Club of CDGI.
+      Our mission is to build a strong community of passionate learners and innovators,
+      working together to explore cutting-edge technologies, organize events, and lead impactful projects.
+    </p>
+  </section>
+
+  <!-- 🚀 Events / Projects -->
+  <section class="projects" id="projects">
+    <h2>Our Projects & Events</h2>
+    <div class="project-grid">
+      <div class="project">
+        <h3>Hackathon 2025</h3>
+        <p>Our flagship annual hackathon bringing together bright minds to solve real-world problems.</p>
+      </div>
+      <div class="project">
+        <h3>AI Workshop</h3>
+        <p>Hands-on sessions on Artificial Intelligence, Machine Learning, and automation tools.</p>
+      </div>
+      <div class="project">
+        <h3>Web Dev Bootcamp</h3>
+        <p>Interactive training to help students learn HTML, CSS, JavaScript, and modern frameworks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 👩‍💻 Team -->
+  <section class="team" id="team">
+    <h2>Meet Our Team</h2>
+    <div class="team-grid">
+      <div class="member">
+        <img src="member1.jpg" alt="Team Member">
+        <h4>Vaishnavi Tiwari</h4>
+        <p>Team Lead</p>
+      </div>
+      <div class="member">
+        <img src="member2.jpg" alt="Team Member">
+        <h4>xyz</h4>
+        <p>Web Developer</p>
+      </div>
+      <div class="member">
+        <img src="member3.jpg" alt="Team Member">
+        <h4>xyz</h4>
+        <p>AI Specialist</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⚓ Footer -->
+  <footer id="contact">
+    <p>Follow us on:</p>
+    <a href="https://github.com/" target="_blank">GitHub</a> |
+    <a href="https://instagram.com/" target="_blank">Instagram</a> |
+    <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+    <p>© 2025 Echelon Dev Society | CDGI</p>
+  </footer>
+
+  <!-- 🌙 Dark Mode Script -->
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+  </body>
+</html>
+open index.html
+
